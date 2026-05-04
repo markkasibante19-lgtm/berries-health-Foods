@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Berries Healthy Meals | Kitende - Premium Healthy Restaurant</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #FFFFFF;
+            color: #1A1A1A;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .logo {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            z-index: 1000;
+            padding: 1rem 5%;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #2C1810;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: #8B4513;
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2C1810;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.3px;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: #8B4513;
+        }
+
+        .nav-links .reserve-btn {
+            background: #2C1810;
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            transition: all 0.3s;
+        }
+
+        .nav-links .reserve-btn:hover {
+            background: #8B4513;
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #2C1810;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            position: relative;
+            margin-top: 0;
+            overflow: hidden;
+        }
+
+        .hero-slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 5%;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.1rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            max-width: 800px;
+            line-height: 1.2;
+        }
+
+        .hero-content .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: #8B4513;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            background: #2C1810;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: #2C1810;
+            transform: translateY(-2px);
+        }
+
+        /* Action Cards */
+        .action-cards {
+            max-width: 900px;
+            margin: -40px auto 0;
+            position: relative;
+            z-index: 10;
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .action-card {
+            background: white;
+            padding: 1.2rem;
+            text-align: center;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            text-decoration: none;
+            color: #2C1810;
+            transition: all 0.3s;
+            border: 1px solid #F0EDE8;
+            cursor: pointer;
+        }
+
+        .action-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 35px rgba(0,0,0,0.12);
+            border-color: #8B4513;
+        }
+
+        .action-card i {
+            font-size: 1.8rem;
+            color: #8B4513;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .action-card span {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        /* Status Bar */
+        .status-bar {
+            background: #F9F6F2;
+            padding: 1.5rem 5%;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #2C1810;
+        }
+
+        .status-item i {
+            color: #8B4513;
+        }
+
+        .open-now {
+            background: #2C1810;
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header .section-tag {
+            color: #8B4513;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #2C1810;
+        }
+
+        .section-header p {
+            color: #666;
+            max-width: 600px;
+            margin: 1rem auto 0;
+        }
+
+        /* Menu Grid */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background: white;
+            border: 1px solid #F0EDE8;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: #8B4513;
+        }
+
+        .menu-image {
+            height: 240px;
+            overflow: hidden;
+        }
+
+        .menu-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .menu-item:hover .menu-image img {
+            transform: scale(1.05);
+        }
+
+        .menu-content {
+            padding: 1.5rem;
+        }
+
+        .menu-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-title h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2C1810;
+        }
+
+        .price {
+            color: #8B4513;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .menu-description {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Reviews */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: #F9F6F2;
+            padding: 2rem;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .quote-icon {
+            color: #8B4513;
+            font-size: 2rem;
+            opacity: 0.3;
+            margin-bottom: 1rem;
+        }
+
+        .review-text {
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .review-author {
+            font-weight: 700;
+            color: #2C1810;
+        }
+
+        .stars {
+            color: #FFB800;
+            margin-bottom: 1rem;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #2C1810;
+        }
+
+        .about-content p {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-features {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .about-feature i {
+            color: #8B4513;
+            font-size: 1.3rem;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Reservation Form */
+        .reservation-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            border: 1px solid #F0EDE8;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2C1810;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 1px solid #E0DCD6;
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #8B4513;
+            box-shadow: 0 0 0 3px rgba(139,69,19,0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .submit-btn {
+            background: #8B4513;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #2C1810;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1A1A1A;
+            color: #CCCCCC;
+            padding: 3rem 5% 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col p {
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+
+        .footer-col a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: #8B4513;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .footer-social a {
+            color: #CCCCCC;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .footer-social a:hover {
+            color: #8B4513;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #333;
+            font-size: 0.85rem;
+        }
+
+        /* Page Switching */
+        .page {
+            display: none;
+        }
+
+        .page.active-page {
+            display: block;
+        }
+
+        /* Small Hero for inner pages */
+        .small-hero {
+            height: 450px;
+            min-height: 450px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            .action-cards {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .status-badge {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .reservation-form {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .action-cards {
+                gap: 0.8rem;
+            }
+            .action-card {
+                padding: 0.8rem;
+            }
+            .action-card i {
+                font-size: 1.3rem;
+            }
+            .action-card span {
+                font-size: 0.8rem;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            BERRIES<span> | KITENDE</span>
+        </div>
+        <div class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a class="nav-link" data-page="home">Home</a>
+            <a class="nav-link" data-page="menu">Menu</a>
+            <a class="nav-link" data-page="reservation">Reservation</a>
+            <a class="nav-link" data-page="about">About</a>
+            <a class="nav-link" data-page="reviews">Reviews</a>
+        </div>
+    </div>
+</nav>
+
+<!-- ========== HOME PAGE ========== -->
+<div id="home-page" class="page active-page">
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-slideshow" id="heroSlideshow">
+            <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=1920&auto=format')"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1920&auto=format')"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=1920&auto=format')"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=1920&auto=format')"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="subtitle">EST. 2024</div>
+            <h1>Berries Healthy Meals</h1>
+            <div class="tagline">Kitende • Kampala - Entebbe Rd</div>
+            <div class="hero-buttons">
+                <a class="btn-primary" data-page="menu"><i class="fas fa-utensils"></i> Explore Menu</a>
+                <a class="btn-primary" data-page="reservation" style="background: transparent; border: 2px solid white;"><i class="fas fa-calendar-alt"></i> Reserve Table</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Action Cards -->
+    <div class="action-cards">
+        <a href="tel:0701411516" class="action-card">
+            <i class="fas fa-phone-alt"></i>
+            <span>Call Us</span>
+        </a>
+        <a href="#" class="action-card" id="directionsBtn">
+            <i class="fas fa-location-dot"></i>
+            <span>Directions</span>
+        </a>
+        <a href="https://wa.me/256701411516" target="_blank" class="action-card">
+            <i class="fab fa-whatsapp"></i>
+            <span>WhatsApp</span>
+        </a>
+    </div>
+
+    <!-- Status Bar -->
+    <div class="status-bar">
+        <div class="status-badge">
+            <span class="status-item"><i class="fas fa-clock"></i> Open Today · 11am – 11pm</span>
+            <span class="status-item"><i class="fas fa-star"></i> 4.2 (97 Reviews)</span>
+            <span class="open-now"><i class="fas fa-circle" style="font-size: 0.6rem; color: #4CAF50;"></i> Open Now</span>
+        </div>
+    </div>
+
+    <!-- Featured Menu -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-tag">Signature Dishes</div>
+            <h2>Featured Menu</h2>
+            <p>Fresh ingredients, bold flavors, healthy choices</p>
+        </div>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="menu-image"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600" alt="Berry Bowl"></div>
+                <div class="menu-content">
+                    <div class="menu-title"><h3>Berry Quinoa Bowl</h3><span class="price">UGX 22k</span></div>
+                    <div class="menu-description">Mixed berries, organic quinoa, fresh spinach, candied almonds</div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-image"><img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=600" alt="Lentil Curry"></div>
+                <div class="menu-content">
+                    <div class="menu-title"><h3>Coconut Lentil Curry</h3><span class="price">UGX 25k</span></div>
+                    <div class="menu-description">Red lentils, coconut milk, turmeric, served with brown rice</div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-image"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600" alt="Avocado Toast"></div>
+                <div class="menu-content">
+                    <div class="menu-title"><h3>Avocado Power Toast</h3><span class="price">UGX 18k</span></div>
+                    <div class="menu-description">Sourdough, smashed avocado, cherry tomatoes, hemp seeds</div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <a class="btn-primary" data-page="menu" style="background: transparent; border: 2px solid #8B4513; color: #8B4513; cursor: pointer;">View Full Menu →</a>
+        </div>
+    </div>
+
+    <!-- Reviews -->
+    <div class="section" style="background: #F9F6F2; margin: 0; border-radius: 0;">
+        <div class="section-header">
+            <div class="section-tag">Testimonials</div>
+            <h2>What Our Guests Say</h2>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="stars">★★★★☆</div>
+                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                <div class="review-text">"Absolutely love this place! The Berry Bowl is fresh, delicious, and filling. Great atmosphere and friendly staff."</div>
+                <div class="review-author">— Nambi P.</div>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★☆</div>
+                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                <div class="review-text">"Finally a healthy spot on Entebbe Road that doesn't compromise on taste. Their vegan options are outstanding."</div>
+                <div class="review-author">— Michael K.</div>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                <div class="review-text">"Quick service, amazing smoothies, and the happy hour deals are fantastic. Highly recommend!"</div>
+                <div class="review-author">— Sarah T.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About -->
+    <div class="section" id="about-section">
+        <div class="about-grid">
+            <div class="about-content">
+                <div class="section-tag" style="margin-bottom: 1rem;">Our Story</div>
+                <h3>Healthy Eating,<br>Made Delicious</h3>
+                <p>At Berries Healthy Meals, we believe that nutritious food should never be boring. Located along Kampala - Entebbe Road in Kitende, we craft every dish with locally sourced ingredients and a passion for wellness.</p>
+                <div class="about-features">
+                    <div class="about-feature"><i class="fas fa-leaf"></i> 100% Fresh</div>
+                    <div class="about-feature"><i class="fas fa-heart"></i> Heart Healthy</div>
+                    <div class="about-feature"><i class="fas fa-seedling"></i> Vegan Options</div>
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.120846403773!2d32.541752!3d0.236034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177ab2b4e5f4366b%3A0x8e220d64f6b6c6c!2sKitende%2C%20Kampala!5e0!3m2!1sen!2sug!4v1700000000000!5m2!1sen!2sug" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ========== MENU PAGE ========== -->
+<div id="menu-page" class="page">
+    <div class="hero small-hero">
+        <div class="hero-overlay" style="background: linear-gradient(135deg, rgba(44,24,16,0.85) 0%, rgba(44,24,16,0.7) 100%);"></div>
+        <div class="hero-content">
+            <h1 style="font-size: 3rem;">Our Menu</h1>
+            <p>Fresh, wholesome, and crafted with care</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="menu-category">
+            <div class="section-header"><h2>Breakfast & Bowls</h2></div>
+            <div class="menu-grid">
+                <div class="menu-item"><div class="menu-image"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600" alt="Berry Bowl"></div><div class="menu-content"><div class="menu-title"><h3>Berry Quinoa Bowl</h3><span class="price">UGX 22,000</span></div><div class="menu-description">Mixed berries, quinoa, spinach, almonds, chia seeds</div></div></div>
+                <div class="menu-item"><div class="menu-image"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600" alt="Avocado Toast"></div><div class="menu-content"><div class="menu-title"><h3>Avocado Power Toast</h3><span class="price">UGX 18,000</span></div><div class="menu-description">Sourdough, avocado, cherry tomatoes, hemp seeds</div></div></div>
+                <div class="menu-item"><div class="menu-image"><img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600" alt="Smoothie"></div><div class="menu-content"><div class="menu-title"><h3>Berry Blast Smoothie</h3><span class="price">UGX 15,000</span></div><div class="menu-description">Mixed berries, banana, oat milk, chia, honey</div></div></div>
+            </div>
+        </div>
+
+        <div class="menu-category" style="margin-top: 4rem;">
+            <div class="section-header"><h2>Mains & Lunches</h2></div>
+            <div class="menu-grid">
+                <div class="menu-item"><div class="menu-image"><img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=600" alt="Curry"></div><div class="menu-content"><div class="menu-title"><h3>Coconut Lentil Curry</h3><span class="price">UGX 25,000</span></div><div class="menu-description">Red lentils, coconut milk, turmeric, brown rice</div></div></div>
+                <div class="menu-item"><div class="menu-image"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600" alt="Zoodles"></div><div class="menu-content"><div class="menu-title"><h3>Zucchini Pesto</h3><span class="price">UGX 20,000</span></div><div class="menu-description">Zoodles, basil pesto, cherry tomatoes, walnuts</div></div></div>
+                <div class="menu-item"><div class="menu-image"><img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600" alt="Falafel"></div><div class="menu-content"><div class="menu-title"><h3>Falafel Hummus Plate</h3><span class="price">UGX 19,000</span></div><div class="menu-description">Homemade falafel, hummus, pita, fresh salad</div></div></div>
+            </div>
+        </div>
+
+        <div class="menu-category" style="margin-top: 4rem;">
+            <div class="section-header"><h2>Fresh Juices</h2></div>
+            <div class="menu-grid">
+                <div class="menu-item"><div class="menu-image"><img src="https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=600" alt="Green Juice"></div><div class="menu-content"><div class="menu-title"><h3>Green Detox</h3><span class="price">UGX 12,000</span></div><div class="menu-description">Spinach, cucumber, green apple, ginger</div></div></div>
+                <div class="menu-item"><div class="menu-image"><img src="https://images.unsplash.com/photo-1502744683835-3a3bebd5232e?w=600" alt="Mango"></div><div class="menu-content"><div class="menu-title"><h3>Mango Tango</h3><span class="price">UGX 14,000</span></div><div class="menu-description">Fresh mango, yogurt, orange zest</div></div></div>
+                <div class="menu-item"><div class="menu-image"><img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417bb7?w=600" alt="Berry"></div><div class="menu-content"><div class="menu-title"><h3>Triple Berry</h3><span class="price">UGX 15,000</span></div><div class="menu-description">Strawberry, blueberry, raspberry, almond milk</div></div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ========== RESERVATION PAGE ========== -->
+<div id="reservation-page" class="page">
+    <div class="hero small-hero">
+        <div class="hero-overlay" style="background: linear-gradient(135deg, rgba(44,24,16,0.85) 0%, rgba(44,24,16,0.7) 100%);"></div>
+        <div class="hero-content">
+            <h1 style="font-size: 3rem;">Make a Reservation</h1>
+            <p>Book your table for an unforgettable healthy dining experience</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="reservation-form">
+            <form id="reservationForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label><i class="fas fa-user"></i> Full Name *</label>
+                        <input type="text" id="fullName" required placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-phone"></i> Phone Number *</label>
+                        <input type="tel" id="phone" required placeholder="0701 411516">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" id="email" placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-users"></i> Number of Guests *</label>
+                        <select id="guests" required>
+                            <option value="">Select</option>
+                            <option>1 person</option>
+                            <option>2 people</option>
+                            <option>3 people</option>
+                            <option>4 people</option>
+                            <option>5 people</option>
+                            <option>6+ people</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label><i class="fas fa-calendar-day"></i> Date *</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-clock"></i> Time *</label>
+                        <select id="time" required>
+                            <option value="">Select time</option>
+                            <option>11:00 AM</option>
+                            <option>12:00 PM</option>
+                            <option>1:00 PM</option>
+                            <option>2:00 PM</option>
+                            <option>6:00 PM</option>
+                            <option>7:00 PM</option>
+                            <option>8:00 PM</option>
+                            <option>9:00 PM</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-comment"></i> Special Requests</label>
+                    <textarea rows="3" placeholder="Dietary restrictions, special occasion, etc."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn"><i class="fas fa-check-circle"></i> Confirm Reservation</button>
+            </form>
+            <div id="formMessage" style="margin-top: 1rem; text-align: center; display: none;"></div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+            <p><i class="fas fa-phone"></i> Or call us directly: <strong>0701 411516</strong></p>
+            <p><i class="fab fa-whatsapp"></i> WhatsApp: <strong>0701 411516</strong></p>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-col">
+            <h4>Berries Healthy Meals</h4>
+            <p>Kampala - Entebbe Rd, Kitende<br>Opposite Quality Mall</p>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Contact</h4>
+            <p><i class="fas fa-phone"></i> 0701 411516</p>
+            <p><i class="fab fa-whatsapp"></i> 0701 411516</p>
+            <p><i class="far fa-clock"></i> Daily 11am – 11pm</p>
+        </div>
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <p><a class="nav-link" data-page="home">Home</a></p>
+            <p><a class="nav-link" data-page="menu">Full Menu</a></p>
+            <p><a class="nav-link" data-page="reservation">Reservation</a></p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Berries Healthy Meals | Kitende. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    // Page switching
+    const pages = {
+        home: document.getElementById('home-page'),
+        menu: document.getElementById('menu-page'),
+        reservation: document.getElementById('reservation-page')
+    };
+
+    function switchPage(pageId) {
+        Object.keys(pages).forEach(key => {
+            pages[key].classList.remove('active-page');
+        });
+        if (pages[pageId]) {
+            pages[pageId].classList.add('active-page');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        // Update active state in nav
+        document.querySelectorAll('.nav-link').forEach(link => {
+            if (link.getAttribute('data-page') === pageId) {
+                link.style.color = '#8B4513';
+            } else {
+                link.style.color = '#2C1810';
+            }
+        });
+    }
+
+    // Add click handlers to all navigation links
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const page = link.getAttribute('data-page');
+            if (page === 'home') switchPage('home');
+            if (page === 'menu') switchPage('menu');
+            if (page === 'reservation') switchPage('reservation');
+            if (page === 'about') {
+                switchPage('home');
+                setTimeout(() => {
+                    document.getElementById('about-section')?.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            }
+            if (page === 'reviews') {
+                switchPage('home');
+                setTimeout(() => {
+                    document.querySelector('.reviews-grid')?.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            }
+        });
+    });
+
+    // Hero slideshow
+    let slides = document.querySelectorAll('#heroSlideshow .hero-slide');
+    let currentSlide = 0;
+    if (slides.length) {
+        setInterval(() => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 5000);
+    }
+
+    // Mobile menu
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    if (mobileBtn) {
+        mobileBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    }
+
+    // Directions button - opens Google Maps
+    document.getElementById('directionsBtn')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.open('https://www.google.com/maps/dir//Berries+Healthy+Meals+Kitende+Kampala-Entebbe+Rd', '_blank');
+    });
+
+    // Reservation form submission
+    const form = document.getElementById('reservationForm');
+    const formMessage = document.getElementById('formMessage');
+
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('fullName')?.value;
+            const phone = document.getElementById('phone')?.value;
+            const guests = document.getElementById('guests')?.value;
+            const date = document.getElementById('date')?.value;
+            const time = document.getElementById('time')?.value;
+            
+            if (!name || !phone || !guests || !date || !time) {
+                formMessage.style.display = 'block';
+                formMessage.style.color = '#e74c3c';
+                formMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> Please fill in all required fields.';
+                setTimeout(() => { formMessage.style.display = 'none'; }, 3000);
+                return;
+            }
+            
+            // Send to WhatsApp
+            const message = `🍓 *New Reservation Request* 🍓%0A%0A👤 *Name:* ${name}%0A📞 *Phone:* ${phone}%0A👥 *Guests:* ${guests}%0A📅 *Date:* ${date}%0A⏰ *Time:* ${time}`;
+            window.open(`https://wa.me/256701411516?text=${message}`, '_blank');
+            
+            formMessage.style.display = 'block';
+            formMessage.style.color = '#27ae60';
+            formMessage.innerHTML = '<i class="fas fa-check-circle"></i> Reservation request sent! We will confirm shortly.';
+            
+            form.reset();
+            
+            setTimeout(() => { formMessage.style.display = 'none'; }, 4000);
+        });
+    }
+
+    // Set minimum date to today for date picker
+    const dateInput = document.getElementById('date');
+    if (dateInput) {
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+    }
+</script>
+</body>
+</html>
